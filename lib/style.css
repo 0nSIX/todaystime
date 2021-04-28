@@ -3,14 +3,12 @@
 
 html,
 body {
-  height: 95%;
-  width: 98%;
+  height: 99%;
+  width: 99%;
   background-color: black;
   background-image: url("./imgs/nightlymood.jpg");
 }
 .footer {
-    /* height: -95%;
-    width: -98%; */
     position: fixed;
     left: 80%;
     right: 0%;
@@ -18,15 +16,40 @@ body {
     text-align: center;
     font-size: 1em;
     font-family: 'Rubik', sans-serif;
-    color: white
+    color: white;
+}
+    a:link {
+      color: rgb(90, 90, 90);
+      background-color: transparent;
+      text-decoration: none;
+    }
+    
+    a:visited {
+      color: rgb(90, 90, 90);
+      background-color: transparent;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      color: grey;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+    
+    a:active {
+      color: rgb(255, 255, 255);
+      background-color: transparent;
+      text-decoration: underline;
+
   }
+  
   .credits {
       /* height: -95%;
       width: -98%; */
       position: fixed;
       left: 0%;
       right: 80%;
-      bottom: 5%;
+      bottom: 2%;
       text-align: center;
       font-size: 1em;
       font-family: 'Rubik', sans-serif;
