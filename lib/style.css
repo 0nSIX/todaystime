@@ -1,0 +1,54 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+html,
+body {
+  height: 95%;
+  width: 98%;
+  background-color: black;
+  background-image: url("https://unsplash.com/photos/2g9hnbMsZQA/download?force=true&w=1920");
+}
+.footer {
+    /* height: -95%;
+    width: -98%; */
+    position: fixed;
+    left: 80%;
+    right: 0%;
+    bottom: 5%;
+    text-align: center;
+    font-size: 1em;
+    font-family: 'Rubik', sans-serif;
+    color: white
+  }
+  .credits {
+      /* height: -95%;
+      width: -98%; */
+      position: fixed;
+      left: 0%;
+      right: 80%;
+      bottom: 5%;
+      text-align: center;
+      font-size: 1em;
+      font-family: 'Rubik', sans-serif;
+      color: white
+  }
+.wrapper {
+  position: absolute;
+  top: 10%;
+  left: 25%;
+  right: 25%;
+}
+
+#date {
+  color: white;
+  text-align: center;
+  font-size: 2.5em;
+  font-family: 'Rubik', sans-serif;
+}
+
+#time {
+  color: white;
+  text-align: center;
+  font-size: 5em;
+  font-family: 'Rubik', sans-serif;
+}
