@@ -74,16 +74,7 @@
         AddData(nextId, e[1]);
         $('ul').append(`<li data-item=${nextId}><span><i class='fa fa-trash'></i></span>`+ e[1] +"</li>");        
 
-    var indexer = 0;
-
-    var applicationData = JSON.parse(window.localStorage.getItem("data") ?? "{}");
-
-    Object.entries(applicationData).map(e=>{
-        $('ul').append("<li data-item=e[0]><span><i class='fa fa-trash'></i></span>"+ e[1] +"</li>");
-
-    });
-
-    $('.add-btn').click(function(){
+       $('.add-btn').click(function(){
 
 
         var itemId = GetIndex();
@@ -99,9 +90,6 @@
 
         $('ul').append(`<li data-item=${itemId}><span><i class='fa fa-trash'></i></span>`+ inputValue +"</li>");
 
-        $('ul').append("<li data-item=itemId><span><i class='fa fa-trash'></i></span>"+ inputValue +"</li>");
-
-
         $('input').val("");
 
     });
@@ -114,8 +102,6 @@
 
             console.log(spanParent.attr("data-item"))
             RemoveData(spanParent.attr("data-item"));
-
-            RemoveData(spanParent.getAttribute("data-item"));
 
             $(this).remove();
         });
