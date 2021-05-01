@@ -1,63 +1,97 @@
 <html>
-    
-    <title>Today's Time</title>
-    <link rel="stylesheet" type="text/css"href="./lib/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
-    <div class="wrapper">
-      <div id="date"></div>
-      <div id="time"></div>
-    </div>
-  
-    <div class="center">
-      <div class="button">
+<title>Today's Time</title>
+<link rel="stylesheet" type="text/css"href="./lib/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+<div class="wrapper">
+    <div id="date"></div>
+    <div id="time"></div>
+</div>
+
+<div class="center">
+    <div class="button">
         <span class="text">To-Do List</span>
         <span class="icon"><i class="fas fa-sort-down"></i></span>
-      </div>
-  
-  <div class="field">
+    </div>
+
+    <div class="field">
         <input type="text" required placeholder="Add your new to-do list">
         <span class="add-btn">ADD</span>
-      </div>
-  
-  <ul>
-  <!-- <li><span><i class="fa fa-trash"></i></span>Get a new laptop</li>
-  <li><span><i class="fa fa-trash"></i></span>Learn to code</li>
-  <li><span><i class="fa fa-trash"></i></span>Get a life</li>
-  <li><span><i class="fa fa-trash"></i></span>Go to college</li> -->
-  <li><span><i class="fa fa-trash"></i></span>Developer Test Mode Only 👈🏾 
-  (YEA TEE!)</li>
-  </ul>
-  </div>
-  
-  <script>
-      $('.add-btn').click(function(){
-        $('ul').append("<li><span><i class='fa fa-trash'></i></span>"+ $('input').val() +"</li>");
-         $('input').val("");
-      });
-      $('ul').on("click", 'span', function(){
-        $(this).parent().fadeOut(500,function(){
-          $(this).remove();
+    </div>
+
+    <ul>
+        <!-- <li><span><i class="fa fa-trash"></i></span>Get a new laptop</li>
+        <li><span><i class="fa fa-trash"></i></span>Learn to code</li>
+        <li><span><i class="fa fa-trash"></i></span>Get a life</li>
+        <li><span><i class="fa fa-trash"></i></span>Go to college</li> -->
+        <li><span><i class="fa fa-trash"></i></span>Developer Test Mode Only 👈🏾
+            (YEA TEE!)</li>
+    </ul>
+</div>
+
+<script>
+
+    var indexer = 0;
+
+    var applicationData = JSON.parse(window.localStorage.getItem("data") ?? "{}");
+
+    Object.entries(applicationData).map(e=>{
+        $('ul').append("<li data-item=e[0]><span><i class='fa fa-trash'></i></span>"+ e[1] +"</li>");
+    });
+
+    $('.add-btn').click(function(){
+
+        var itemId = `item_${indexer++}`;
+        var inputValue = $('input').val();
+
+        AddData(itemId, inputValue);
+
+        $('ul').append("<li data-item=itemId><span><i class='fa fa-trash'></i></span>"+ inputValue +"</li>");
+
+        $('input').val("");
+
+    });
+
+    $('ul').on("click", 'span', function(){
+
+        var spanParent = $(this).parent();
+
+        spanParent.fadeOut(500,function(){
+            RemoveData(spanParent.getAttribute("data-item"));
+            $(this).remove();
         });
-      });
-      $('.icon').click(function(){
+    });
+    $('.icon').click(function(){
         $('.field').toggleClass("hide");
-      })
-    </script>
-  
-    <div class="footer">
-      <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="icueMike" data-description="Support me on Buy me a coffee!" data-message="Thank you for checking out my app and hope you love it. Now buy me coffee 😊" data-color="#505050" data-position="Right" data-x_margin="18" data-y_margin="18"></script> 
-     </div>
-  
-    <div class="credits">
-      Photo by <a href="https://unsplash.com/@yoeljgonzalez?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Yoel J Gonzalez</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-    </div>
-  
-    <div class="icue">
-      Application Developed by <a href="https://www.facebook.com/CraftyDevelopers">icueMike</a> with 💖 from <a href="http://en.wikipedia.org/wiki/Fort_Bragg">Fort Bragg, NC</a>.
-    </div>
-    
-  <script src="./lib/timegoesby.js"></script>
+    })
+
+    function AddData(id, value){
+
+        window.localStorage.setItem("data", JSON.stringify(applicationData));
+        applicationData[id] = value;
+    }
+
+    function RemoveData(id){
+        delete applicationData[id];
+        window.localStorage.setItem("data", JSON.stringify(applicationData));
+    }
+
+</script>
+
+<div class="footer">
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="icueMike" data-description="Support me on Buy me a coffee!" data-message="Thank you for checking out my app and hope you love it. Now buy me coffee 😊" data-color="#505050" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+</div>
+
+<div class="credits">
+    Photo by <a href="https://unsplash.com/@yoeljgonzalez?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Yoel J Gonzalez</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+</div>
+
+<div class="icue">
+    Application Developed by <a href="https://www.facebook.com/CraftyDevelopers">icueMike</a> with 💖 from <a href="http://en.wikipedia.org/wiki/Fort_Bragg">Fort Bragg, NC</a>.
+</div>
+
+<script src="./lib/timegoesby.js"></script>
 
 </html>
