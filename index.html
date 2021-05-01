@@ -16,8 +16,9 @@
         <span class="icon"><i class="fas fa-sort-down"></i></span>
     </div>
 
+
     <div class="field">
-        <input type="text" required placeholder="Add your new to-do list">
+        <input type="text" required placeholder="Get Starbucks @9pm ☕">
         <span class="add-btn">ADD</span>
     </div>
 
@@ -25,85 +26,14 @@
         <!-- <li><span><i class="fa fa-trash"></i></span>Get a new laptop</li>
         <li><span><i class="fa fa-trash"></i></span>Learn to code</li>
         <li><span><i class="fa fa-trash"></i></span>Get a life</li>
-        <li><span><i class="fa fa-trash"></i></span>Go to college</li> -->
+        <li><span><i class="fa fa-trash"></i></span>Go to college</li> 
         <li><span><i class="fa fa-trash"></i></span>Developer Test Mode Only 👈🏾
-            (YEA TEE!)</li>
+            (YEA TEE!)</li> -->
     </ul>
+    <div class="econ">
+        <a href="https://emojipedia.org/search/?q=coffee" target="_blank" title="Anyone need an emoji?"><span class ="text">Looking for Emojis?</span></a>
+    </div>
 </div>
-
-<script>
-
-    var indexes = [];
-    var used = [];
-       
-    function GetIndex(){
-        if(used.length == 0){
-            var id = indexes.length+"";
-            indexes.push(id);
-            return id;
-        }        
-        
-        var id = used.pop();
-        indexes.push(id);        
-        return id;        
-    }
-    
-    function ResetIndex(id){
-        id = id+"";
-        indexes.splice(indexes.indexOf(id), 1);
-        used.push(id)
-    }
-
-    var applicationData = {};
-    
-    function AddData(id, value){
-        applicationData[id] = value;
-        window.localStorage.setItem("data", JSON.stringify(applicationData));
-    }
-
-    function RemoveData(id){
-        delete applicationData[id];
-        window.localStorage.setItem("data", JSON.stringify(applicationData));
-    }
-    
-    var applicationDataPulled = JSON.parse(window.localStorage.getItem("data") ?? "{}");
-        
-    Object.entries(applicationDataPulled).map(e=>{
-        var nextId = GetIndex();
-        AddData(nextId, e[1]);
-        $('ul').append(`<li data-item=${nextId}><span><i class='fa fa-trash'></i></span>`+ e[1] +"</li>");        
-    });
-
-    $('.add-btn').click(function(){
-
-        var itemId = GetIndex();
-        console.log(itemId);
-        
-        var inputValue = $('input').val();
-
-        AddData(itemId, inputValue);
-
-        $('ul').append(`<li data-item=${itemId}><span><i class='fa fa-trash'></i></span>`+ inputValue +"</li>");
-
-        $('input').val("");
-
-    });
-
-    $('ul').on("click", 'span', function(){
-
-        var spanParent = $(this).parent();
-
-        spanParent.fadeOut(500,function(){
-            console.log(spanParent.attr("data-item"))
-            RemoveData(spanParent.attr("data-item"));
-            $(this).remove();
-        });
-    });
-    $('.icon').click(function(){
-        $('.field').toggleClass("hide");
-    })
-
-</script>
 
 <div class="footer">
     <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="icueMike" data-description="Support me on Buy me a coffee!" data-message="Thank you for checking out my app and hope you love it. Now buy me coffee 😊" data-color="#505050" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
@@ -114,9 +44,10 @@
 </div>
 
 <div class="icue">
-    Application Developed by <a href="https://www.facebook.com/CraftyDevelopers">icueMike</a> with 💖 from <a href="http://en.wikipedia.org/wiki/Fort_Bragg">Fort Bragg, NC</a>.
+    Application Developed by <a href="https://www.facebook.com/CraftyDevelopers" target="_blank">CraftyDevelopers</a> & <a href="https://www.twitch.tv/micecode" target="_blank">EpicMice</a> with 💖 from <a href="http://en.wikipedia.org/wiki/Fort_Bragg" target="_blank">Fort Bragg, NC</a>.
 </div>
 
 <script src="./lib/timegoesby.js"></script>
+<script src="./lib/plugins/todo_pg.js"></script>
 
 </html>
