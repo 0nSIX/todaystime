@@ -33,6 +33,7 @@
 
 <script>
 
+
     var indexes = [];
     var used = [];
        
@@ -72,18 +73,34 @@
         var nextId = GetIndex();
         AddData(nextId, e[1]);
         $('ul').append(`<li data-item=${nextId}><span><i class='fa fa-trash'></i></span>`+ e[1] +"</li>");        
+
+    var indexer = 0;
+
+    var applicationData = JSON.parse(window.localStorage.getItem("data") ?? "{}");
+
+    Object.entries(applicationData).map(e=>{
+        $('ul').append("<li data-item=e[0]><span><i class='fa fa-trash'></i></span>"+ e[1] +"</li>");
+
     });
 
     $('.add-btn').click(function(){
 
+
         var itemId = GetIndex();
         console.log(itemId);
         
+
+        var itemId = `item_${indexer++}`;
+
         var inputValue = $('input').val();
 
         AddData(itemId, inputValue);
 
+
         $('ul').append(`<li data-item=${itemId}><span><i class='fa fa-trash'></i></span>`+ inputValue +"</li>");
+
+        $('ul').append("<li data-item=itemId><span><i class='fa fa-trash'></i></span>"+ inputValue +"</li>");
+
 
         $('input').val("");
 
@@ -94,14 +111,31 @@
         var spanParent = $(this).parent();
 
         spanParent.fadeOut(500,function(){
+
             console.log(spanParent.attr("data-item"))
             RemoveData(spanParent.attr("data-item"));
+
+            RemoveData(spanParent.getAttribute("data-item"));
+
             $(this).remove();
         });
     });
     $('.icon').click(function(){
         $('.field').toggleClass("hide");
     })
+
+
+    function AddData(id, value){
+
+        window.localStorage.setItem("data", JSON.stringify(applicationData));
+        applicationData[id] = value;
+    }
+
+    function RemoveData(id){
+        delete applicationData[id];
+        window.localStorage.setItem("data", JSON.stringify(applicationData));
+    }
+
 
 </script>
 
