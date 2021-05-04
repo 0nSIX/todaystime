@@ -7,6 +7,7 @@ body {
   width: 99%;
   background-color: black;
   background-image: url("./imgs/nightlymood.jpg");
+  background-size: cover;
   scrollbar-shadow-color: #333;
 }
 
@@ -21,12 +22,13 @@ body {
     color: white;
 }
 .econ {
-    font-size: 16px;
+    font-size: 12.5px;
     text-align: right;
     font-family: 'rubik', sans-serif;
     /* To-Do: Check this out to see if this still works or depreciated */
     /* decoration: none;  */
-  }
+    padding: 8.5px;
+   }
 .icue {
   position: fixed;
   left: 55%;
@@ -70,7 +72,7 @@ body {
       right: 80%;
       bottom: 2%;
       text-align: center;
-      font-size: 1em;
+      font-size: .6 em;
       font-family: 'Rubik', sans-serif;
       color: white
   }
@@ -84,14 +86,14 @@ body {
 #date {
   color: white;
   text-align: center;
-  font-size: 2.5em;
+  font-size: 2em;
   font-family: 'Rubik', sans-serif;
 }
 
 #time {
   color: white;
   text-align: center;
-  font-size: 5em;
+  font-size: 3.5em;
   font-family: 'Rubik', sans-serif;
 }
 
@@ -142,10 +144,12 @@ body {
 .field.hide{
   display: none;
 }
+
 .field input{
   height: 100%;
   width: 100%;
   padding-left: 15px;
+  padding-right: 15px;
   font-size: 18px;
   outline: none;
   background: none;
