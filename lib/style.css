@@ -20,6 +20,13 @@ body {
     font-family: 'Rubik', sans-serif;
     color: white;
 }
+.econ {
+    font-size: 16px;
+    text-align: right;
+    font-family: 'rubik', sans-serif;
+    /* To-Do: Check this out to see if this still works or depreciated */
+    /* decoration: none;  */
+  }
 .icue {
   position: fixed;
   left: 55%;
@@ -89,18 +96,7 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+/* Addons Beings Here */
 
 *{
   margin: 0;
