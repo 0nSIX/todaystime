@@ -22,13 +22,18 @@ body {
     color: white;
 }
 .econ {
+
     font-size: 12.5px;
+    font-size: 16px;
+
     text-align: right;
     font-family: 'rubik', sans-serif;
     /* To-Do: Check this out to see if this still works or depreciated */
     /* decoration: none;  */
     padding: 8.5px;
    }
+=======
+  }
 .icue {
   position: fixed;
   left: 55%;
